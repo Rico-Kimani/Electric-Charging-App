@@ -1,0 +1,432 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004d40;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .logo img {
+    width: 80px;
+    height: auto;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #80cbc4;
+}
+
+/* Authentication Section */
+
+/* General Styles for Signup/Signin Section */
+#SignupAndSignin {
+    width: 100%; /* Full width strip */
+    background-color: #f8f9fa; /* Light background for contrast */
+    padding: 40px 0; /* Vertical padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#SignupAndSignin .container {
+    width: 80%; /* Restrict width of the content */
+    max-width: 1200px; /* Prevent it from being too wide on larger screens */
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.auth-section {
+    width: 48%; /* Each section takes half the width */
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+    border-radius: 8px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.auth-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.auth-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-section input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.auth-section button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.auth-section button:hover {
+    background-color: #45a049;
+}
+
+.toggle-link p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.toggle-link button {
+    background: none;
+    border: none;
+    color: #007BFF;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.toggle-link button:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #SignupAndSignin .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .auth-section {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 20px;
+    }
+}
+
+/* Overview Section */
+.overview {
+    padding: 60px 10%;
+    background-color: #f9fbe7;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 30px;
+    color: #33691e;
+}
+
+.overview-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.text-content p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+/* .image-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.image-grid img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
+} */
+
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Add a fade-in effect */
+.fade {
+  animation-name: fade;
+  animation-duration: 2.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Charging Options Section */
+section > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin: 60px 0;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.option {
+    width: 30%;
+    text-align: center;
+}
+
+.option img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.option h5 {
+    color: #1b5e20;
+    margin-bottom: 10px;
+}
+
+.option p {
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* Pricing Section */
+.pricing-section {
+    background-color: #e8eaf6;
+    padding: 50px 10%;
+    text-align: center;
+}
+
+.pricing-table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-table th,
+.pricing-table td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.pricing-table th {
+    background-color: #3f51b5;
+    color: white;
+    font-size: 18px;
+}
+
+.pricing-table tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+/* Booking & Calculator Section */
+.booking-calculator-section {
+    background: #c8e6c9;
+    padding: 60px 10%;
+    text-align: center;
+}
+
+#bookingCalculatorForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.form-group, .forms-group {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #388e3c;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+button[type="submit"] {
+    padding: 12px 20px;
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #2e7d32;
+}
+
+/* Footer */
+footer {
+    background-color: #004d40;
+    color: white;
+    padding: 40px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    margin: 5px 0;
+    display: block;
+}
+
+.footer-links ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
+
+.progress-bar-container {
+    margin: 20px auto;
+    width: 80%;
+    background-color: #ccc;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 50%;
+    background-color: #76ff03;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .overview-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    section > div {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-group, .forms-group {
+        width: 100%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+}

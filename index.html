@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Charging Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--Header Section-->
+    <header>
+        <div class="logo">
+            <img src="./Photos/EV.jpg" alt="Logo" style="width: 70px;height: 50px;">
+
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#bookingAndCalculator">Bookings</a></li>
+                <li><a href="#signup">Login/Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<!--Signup/sign-in Section-->
+    <section id="SignupAndSignin" class="signup-signin-section">
+        <div class="container">
+            <!--Login form section-->
+            <div id="login-section" class="auth-section active">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <input type="email" name="email" placeholder="Email"required>
+                    <input type="password" name="password" placeholder="Password"required>
+                    <button type="submit">Login</button>
+                </form>
+                <div class="toggle-link">
+                    <p>Don't have an account? <button onclick="toggleForm('signup')">Signup</button></p>
+                </div>
+            </div>
+
+            <!--Sign-Up form section-->
+            <div id="signup-section" class="auth-section">
+                <h2>Sign Up</h2>
+                <form id="signup-form">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="confirmPassword" placeholder="Confirm Password">
+                    <button type="submit">Sign Up</button>
+                </form>
+                <div class="toggle-link">
+                    <p>Already have an account? <button onclick="toggleForm('login')">Login</button></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Overview-->
+
+    <!--Overview Section-->
+<section id="home" class="overview">
+    <h2 class="section-title">EV Charging Overview</h2>
+    <p class="intro-text">
+        As electric vehicles (EVs) reshape the future of transportation, understanding how charging works is key.
+        EV owners must know the difference between AC and DC charging, their ideal uses, and where they fit into
+        public and private charging infrastructure.
+    </p>
+
+    <div class="overview-content">
+        <div class="text-content">
+            <p>
+                Most charging stations today use AC charging. The typical speed is 10-15kW,
+                depending on the car and available infrastructure. This is ideal for home or
+                workplace charging. However, DC charging—common along highways—is becoming
+                available for home use, enabling fast and bidirectional charging.
+            </p>
+            <p>
+                EVs use two types of power: alternating current (AC) and direct current (DC).
+                Grid power is always AC, but EV batteries store power as DC. That is why most
+                electronic devices need a converter. Every time you charge your phone, the plug
+                converts AC power to DC.
+            </p>
+            <p>
+                The main difference between AC and DC charging is where the conversion occurs—inside
+                or outside the vehicle. DC chargers perform the conversion within the charger, feeding
+                power directly into the battery. AC chargers, however, rely on the car's onboard charger
+                to convert AC to DC.
+            </p>
+
+            <h3> Challenges and future trends</h3>
+            <p>While AC charging is sufficient for most users, the growing need for fast, reliable solutions is driving investments
+                in DC infrastructure. However, the cost of installation and equipment remains a challenge. Innovations such as
+                wireless charging and ultra-fast chargers are on the horizon, promising to make charging even more seamless.
+            </p>
+            <p>
+                Most electric vehicles today use AC chargers due to their cost-effectiveness and convenience.
+                However, the rise of DC fast chargers offers a promising future for rapid and efficient EV
+                charging, especially for public infrastructure.
+            </p>
+        </div>
+
+        <!-- <div class="image-grid">
+            <img src="./Photos/car11.jpeg" alt="EV charging station" />
+            <img src="./Photos/car12.jpeg" alt="Car being charged" />
+            <img src="./Photos/car13.jpeg" alt="AC vs DC charging" />
+        </div> -->
+
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+               <img src="./Photos/car13.jpeg" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+              <img src="./Photos/car12.jpeg" style="width:100%">
+            </div>
+
+             <div class="mySlides fade">
+            <img src="./Photos/images (1).jpeg" style="width:100%">
+             </div>
+
+            <div class="mySlides fade">
+              <img src="./Photos/car11.jpeg" style="width:100%">
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+        
+    </div>
+</section>
+    
+
+    <!--App Features And Charging Options-->
+    <section>
+        <div>
+            <h2>Charging Options</h2>
+            <div class="option">
+                <h5>Standard/Slow Chargers</h5>
+                <img src="./Photos/230-VAC-400-VAC-Slow-Haosheng-Charging-Station-EV-Charger.webp" alt="Slow charger">
+                <p>Slow charging stations, often referred to as Level 1 charging, provide the most modest charging capability.
+                    Typically, these stations deliver a power output of 10kW, necessitating around eight to 12 hours to fully
+                    charge an average electric vehicle, such as the standard Nissan Leaf with its 39kWh battery. For plug-in hybrid
+                    electric vehicles (PHEVs), the charging time is considerably less, ranging from two to four hours.
+                    These stations are ideal for overnight use at home or during prolonged stays at locations like workplaces.
+                </p>
+            </div>
+            <div class="option">
+                <h5>Fast Chargers</h5>
+                <img src="./Photos/eflex-series-60-to-120kw-ev-charging-station_1.jpg" alt="Fast Chargers">
+                <p>Fast charging stations, identified as Level 2 charging, provide significantly quicker charging rates than their
+                    slow charging counterparts. Most fast-charging units operate at 50kW, substantially exceeding the speed of standard
+                     household sockets, with some units offering up to 70kW. Despite the term "fast," these chargers generally replenish
+                     the battery of electric vehicles, such as the previously mentioned Nissan Leaf, within up to five hours and can charge
+                      a plug-in hybrid electric vehicle (PHEV) in approximately an hour.These stations are frequently situated in public areas,
+                       including shopping centres and car parks, with major public charging networks l
+                    </p>
+            </div>
+            <div class="option">
+                <h5>Rapid Chargers</h5>
+                <img src="./Photos/300kw-EV-Charging-station.webp" alt="Rapid Chargers">
+                <p>Rapid charging stations, recognized as Level 3 charging or DC fast charging, offer superior charging speeds compared to
+                    Levels 1 and 2. Typically, these stations boast a power output starting from 50 kW, ascending to ultra-rapid chargers that
+                    provide between 120 kW and 180 kW. At a 50kW rapid charging station, most electric vehicles can gain up to 160 kKilometers of range
+                     in just 30 minutes.Designed for swift recharges during extended trips, rapid chargers can replenish up to 80% of a battery's
+                     capacity in about 20 minutes, although vehicles equipped with larger batteries may require more time. These stations are
+                     strategically located at motorway service stations and near major roadways for easy access during travel.
+                    </p>
+            </div>
+        </div>
+    </section>
+
+    <!--Pricing Table-->
+    <section id="pricing" class="pricing-section">
+        <h2>Pricing Details</h2>
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th>Unit</th>
+                    <th>Purpose</th>
+                    <th>Power Capacity</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Standard Charger</td>
+                    <td>Overnight Charging</td>
+                    <td>10kW</td>
+                    <td>$5/session</td>
+                </tr>
+                <tr>
+                    <td>Fast Charger</td>
+                    <td>Top-ups</td>
+                    <td>50kW</td>
+                    <td>$10/session</td>
+                </tr>
+                <tr>
+                    <td>Rapid Charger</td>
+                    <td>Overnight Charging</td>
+                    <td>150kW</td>
+                    <td>$20/session</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+<!-- Integrated Booking and Charging Calculator Section -->
+<section id="bookingAndCalculator" class="booking-calculator-section">
+    <h2>Book A Charging Session & Estimate Cost</h2>
+
+    <form id="bookingCalculatorForm">
+        <!-- Booking Section -->
+        <div class="forms-group">
+            <label for="location">Select Location</label>
+            <select id="location" required>
+                <option value="disabled selected">Select a location</option>
+                <option value="station1">Station 1 - Downtown</option>
+                <option value="station2">Station 2 - Uptown</option>
+                <option value="station3">Station 3 - Airport</option>
+            </select>
+        </div>
+
+        <div class="forms-group">
+            <label for="date">Select Date</label>
+            <input type="date" id="date" min="" required>
+        </div>
+
+        <div class="forms-group">
+            <label for="startTime">Select Start Time</label>
+            <input type="time" id="startTime" required>
+        </div>
+
+        <div class="forms-group">
+            <label for="durationHours">Duration to Use (Hours)</label>
+            <input type="number" id="durationHours" min="0" max="24" value="1" required>
+        </div>
+
+        <div class="forms-group">
+            <label for="durationMinutes">Duration to Use (Minutes)</label>
+            <input type="number" id="durationMinutes" min="0" max="59" value="1" required>
+        </div>
+
+        <!-- Charging Calculator Section -->
+        <div class="form-group">
+            <label for="batteryCapacity">Battery Capacity (in kWh)</label>
+            <input type="number" id="batteryCapacity" min="0" placeholder="Enter battery capacity" required>
+        </div>
+
+        <div class="form-group">
+            <label for="chargerType">Select Charger Type</label>
+            <select id="chargerType" required>
+                <option value="10">Standard Charger (10kW)</option>
+                <option value="50">Fast Charger (50kW)</option>
+                <option value="150">Rapid Charger (150kW)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="initialCharge">Initial Battery Percentage (%)</label>
+            <input type="number" id="initialCharge" min="0" max="100" value="20" required>
+        </div>
+
+        <div class="form-group">
+            <label for="desiredCharge">Desired Battery Percentage (%)</label>
+            <input type="number" id="desiredCharge" min="0" max="100" value="80" required>
+        </div>
+
+        <button type="submit">Book & Calculate</button>
+    </form>
+
+    <div id="result">
+        <h3>Results</h3>
+        <p id="timeTaken">Time Taken: --</p>
+        <p id="totalCost">Total Cost: --</p>
+    </div>
+</section>
+
+    <!--Footer with Progress Bar and additional content-->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#booking">Bookings</a></li>
+                    <li><a href="#signup">Login/Signup</a></li>
+                </ul>
+            </div>
+
+            <div class="social-icons">
+                <h4>Follow US</h4>
+                <a href="#"><img src="./Photos/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="./Photos/xlogo.png" alt="X"></a>
+                <a href="#"><img src="./Photos/iglogo.jpeg" alt="Instagram"></a>
+                <a href="#"><img src="./Photos/Linkedin.png" alt="Linkedin"></a>
+            </div>
+
+            <div class="contact-icons">
+                <h4>Contact Us</h4>
+                <p>Email:support@evplatform.com</p>
+                <p>Phone: +254791199090</p>
+                <p>Address:420 Smoke-Eco Ave, Stone City</p>
+            </div>
+        </div>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <p class="footer-note">&copy;2024 EV Charging Application. All Right Reserved.</p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
