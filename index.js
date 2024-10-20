@@ -134,31 +134,3 @@ document.addEventListener("DOMContentLoaded", () => {
     totalCostElement.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
   });
 });
-
-
-// Handle Booking & Calculator Form Submission
-// document.getElementById('bookingCalculatorForm').addEventListener('submit', function (e) {
-//     e.preventDefault();
-    
-//     const batteryCapacity = parseFloat(document.getElementById('batteryCapacity').value);
-//     const chargerType = parseFloat(document.getElementById('chargerType').value);
-//     const initialCharge = parseFloat(document.getElementById('initialCharge').value);
-//     const desiredCharge = parseFloat(document.getElementById('desiredCharge').value);
-
-//     if (desiredCharge <= initialCharge) {
-//         alert('Desired charge must be greater than initial charge.');
-//         return;
-//     }
-
-    // Calculate required energy (in kWh) and time (in hours)
-    // const energyNeeded = batteryCapacity * (desiredCharge - initialCharge) / 100;
-    // const timeNeeded = energyNeeded / chargerType;
-
-    // Calculate total cost based on charger type
-    // const chargerCost = chargerType === 10 ? 5 : chargerType === 50 ? 10 : 20;
-    // const totalCost = chargerCost * timeNeeded;
-
-    // Display results
-//     document.getElementById('timeTaken').textContent = `Time Taken: ${timeNeeded.toFixed(2)} hours`;
-//     document.getElementById('totalCost').textContent = `Total Cost: $${totalCost.toFixed(2)}`;
-// });
