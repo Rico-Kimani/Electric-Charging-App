@@ -49,8 +49,6 @@ nav ul li a:hover {
 }
 
 /* Authentication Section */
-
-/* General Styles for Signup/Signin Section */
 #SignupAndSignin {
     width: 100%; /* Full width strip */
     background-color: #f8f9fa; /* Light background for contrast */
@@ -69,8 +67,8 @@ nav ul li a:hover {
 }
 
 .auth-section {
-    width: 48%; /* Each section takes half the width */
-    background-color: #ffffff; /* White background */
+    width: 48%; 
+    background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
     border-radius: 8px;
     padding: 30px;
@@ -165,22 +163,6 @@ nav ul li a:hover {
     margin-bottom: 15px;
     line-height: 1.8;
 }
-
-/* .image-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.image-grid img {
-    width: 100%;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.image-grid img:hover {
-    transform: scale(1.05);
-} */
 
 .slideshow-container {
   position: relative;

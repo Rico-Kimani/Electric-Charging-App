@@ -1,52 +1,97 @@
-//  LOGIN & SIGN-UP 
-// Dummy data to store registered users
+//  LOGIN & SIGN-UP
 const users = [];
 
-// Function to toggle between login and signup forms
-    window.toggleForm = function(formType) {
-        const loginSection = document.getElementById("login-section");
-        const signupSection = document.getElementById("signup-section");
+// Variables for form and sections
+const signupForm = document.getElementById('signup-form');
+const loginForm = document.getElementById('login-form');
+const loginSection = document.getElementById('login-section');
+const signupSection = document.getElementById('signup-section');
 
-        if (formType === "signup") {
-            loginSection.classList.remove("active");
-            signupSection.classList.add("active");
-        } else {
-            signupSection.classList.remove("active");
-            loginSection.classList.add("active");
-        }
-    };
-// Handle Login Form Submission
-document.getElementById('login-form').addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent form refresh
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-
-    const user = users.find(user => user.email === email && user.password === password);
-    if (user) {
-        alert('Login successful! Welcome, ' + user.username);
-    } else {
-        alert('Invalid email or password. Please try again.');
-    }
-});
-
-// Handle Sign-Up Form Submission
-document.getElementById('signup-form').addEventListener('submit', function (e) {
+// Event listener for Sign-up form submission
+signupForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    const username = e.target.username.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    const confirmPassword = e.target.confirmPassword.value;
 
+    const username = signupForm.username.value;
+    const email = signupForm.email.value;
+    const password = signupForm.password.value;
+    const confirmPassword = signupForm.confirmPassword.value;
+
+    // Check if passwords match
     if (password !== confirmPassword) {
-        alert('Passwords do not match.');
+        alert('Passwords do not match!');
         return;
     }
 
-    users.push({ username, email, password });
-    alert('Signup successful! Please log in.');
-    toggleForm('login'); // Switch to login form
+    // Create user data object
+    const userData = {
+        username,
+        email,
+        password
+    };
+
+    // Check if the email already exists
+    fetch('https://electric-charging-app.onrender.com/users?email=' + email)
+        .then(response => response.json())
+        .then(data => {
+            if (data.length > 0) {
+                alert('Email already exists. Please try logging in.');
+            } else {
+                // Create new user by sending a POST request
+                fetch('https://electric-charging-app.onrender.com/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('User signed up successfully:', data);
+                    alert('Sign-up successful! Please log in.');
+                    signupForm.reset();
+                    toggleForm('login');
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        });
 });
 
+// Event listener for Login form submission
+loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const email = loginForm.email.value;
+    const password = loginForm.password.value;
+
+    // Fetch the user by email
+    fetch('https://electric-charging-app.onrender.com/users?email=' + email)
+        .then(response => response.json())
+        .then(data => {
+            if (data.length === 0) {
+                alert('User not found. Please sign up.');
+            } else {
+                const user = data[0]; // Assuming unique emails
+                if (user.password === password) {
+                    alert('Login successful! Welcome, ' + user.username);
+                    loginForm.reset();
+                    // Here, redirect to another page or store the session
+                } else {
+                    alert('Incorrect password. Please try again.');
+                }
+            }
+        })
+        .catch(error => console.error('Error:', error));
+
+// Function to toggle between login and signup forms
+    function toggleForm(form) {
+    if (form === 'signup') {
+        loginSection.classList.remove('active');
+        signupSection.classList.add('active');
+    } else {
+        signupSection.classList.remove('active');
+        loginSection.classList.add('active');
+    }
+}
 
 //Image Slides
 
@@ -57,11 +102,11 @@ function showSlides() {
   let i;
   let slides = document.getElementsByClassName("mySlides");
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
+    slides[i].style.display = "none";
   }
   slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  slides[slideIndex-1].style.display = "block";  
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
   setTimeout(showSlides, 5000); // Change image every 5 seconds
 }
 
@@ -147,7 +192,7 @@ function plusSlides(n) {
             duration: `${durationHours} hour(s) ${durationMinutes} minute(s)`
         };
 
-        // Foward booking data to the JSON server 
+        // Foward booking data to the JSON server
     fetch('https://electric-charging-app.onrender.com/bookings', {
         method: 'POST',
         headers: {
@@ -175,3 +220,4 @@ function plusSlides(n) {
       const progress = (window.scrollY / totalHeight) * 100;
       scrollProgress.style.width = `${progress}%`;
   });
+})
