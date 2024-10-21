@@ -1,0 +1,71 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "username": "john_doe",
+        "email": "john@example.com",
+        "password": "password123"
+      },
+      {
+        "id": 2,
+        "username": "james_doe",
+        "email": "james@example.com",
+        "password": "password123"
+      },
+      {
+        "id": 3,
+        "username": "judas_doe",
+        "email": "judas@example.com",
+        "password": "password123"
+      },
+      {
+        "id": 4,
+        "username": "jane_doe",
+        "email": "jane@example.com",
+        "password": "password123"
+      },
+      {
+        "id": 5,
+        "username": "janet_doe",
+        "email": "janet@example.com",
+        "password": "password123"
+      },
+      {
+        "id": 6,
+        "username": "janel_doe",
+        "email": "janel@example.com",
+        "password": "password456"
+      }
+    ],
+    "bookings": [
+      {
+        "id": 1,
+        "userId": 1,
+        "location": "Downtown",
+        "date": "2024-10-22",
+        "startTime": "10:00",
+        "durationHours": 2,
+        "durationMinutes": 30,
+        "batteryCapacity": 50,
+        "chargerType": 50,
+        "initialCharge": 20,
+        "desiredCharge": 80,
+        "totalCost": 25
+      },
+      {
+        "id": 2,
+        "userId": 2,
+        "location": "Uptown",
+        "date": "2024-10-23",
+        "startTime": "14:00",
+        "durationHours": 1,
+        "durationMinutes": 45,
+        "batteryCapacity": 40,
+        "chargerType": 150,
+        "initialCharge": 10,
+        "desiredCharge": 90,
+        "totalCost": 35
+      }
+    ]
+  }
+  

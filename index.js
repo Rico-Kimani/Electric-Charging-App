@@ -1,5 +1,3 @@
-// index.js
-
 document.addEventListener('DOMContentLoaded', function() {
   // Handle form toggle between Login and Signup
   function toggleForm(formType) {
@@ -32,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const password = loginForm.password.value;
 
       // Send POST request to login API
-      fetch('https://your-api-endpoint.com/login', {
+      fetch('https://electric-charging-app.onrender.com/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password })
@@ -68,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       // Send POST request to signup API
-      fetch('https://your-api-endpoint.com/signup', {
+      fetch('https://electric-charging-app.onrender.com/signup', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, email, password })
@@ -130,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const totalCost = calculateCost(chargerType, timeTaken);
 
       // Send POST request to booking API
-      fetch('https://your-api-endpoint.com/book', {
+      fetch('https://electric-charging-app.onrender.com/book', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
