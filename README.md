@@ -1,6 +1,6 @@
 # Electric-Charging-App
 
-The app is my EV(Elextric-Vehicle) Charging website, 21/10/2024
+The app is my EV(Electric-Vehicle) Charging website, 21/10/2024
 By Erick Kimani
 
 Description
