@@ -1,194 +1,160 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Handle form toggle between Login and Signup
-  function toggleForm(formType) {
-      const loginSection = document.getElementById('login-section');
-      const signupSection = document.getElementById('signup-section');
+//  LOGIN & SIGN-UP 
+// Dummy data to store registered users
+const users = [];
 
-      if (formType === 'login') {
-          loginSection.classList.add('active');
-          signupSection.classList.remove('active');
-      } else {
-          signupSection.classList.add('active');
-          loginSection.classList.remove('active');
-      }
+// Function to toggle between login and signup forms
+    window.toggleForm = function(formType) {
+        const loginSection = document.getElementById("login-section");
+        const signupSection = document.getElementById("signup-section");
+
+        if (formType === "signup") {
+            loginSection.classList.remove("active");
+            signupSection.classList.add("active");
+        } else {
+            signupSection.classList.remove("active");
+            loginSection.classList.add("active");
+        }
+    };
+// Handle Login Form Submission
+document.getElementById('login-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent form refresh
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    const user = users.find(user => user.email === email && user.password === password);
+    if (user) {
+        alert('Login successful! Welcome, ' + user.username);
+    } else {
+        alert('Invalid email or password. Please try again.');
+    }
+});
+
+// Handle Sign-Up Form Submission
+document.getElementById('signup-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const username = e.target.username.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const confirmPassword = e.target.confirmPassword.value;
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+    }
+
+    users.push({ username, email, password });
+    alert('Signup successful! Please log in.');
+    toggleForm('login'); // Switch to login form
+});
+
+
+//Image Slides
+
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
   }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex-1].style.display = "block";  
+  setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
 
-  // Attach event listeners for the form toggle buttons
-  document.querySelectorAll('.toggle-link button').forEach(button => {
-      button.addEventListener('click', function() {
-          const targetForm = this.textContent.includes('Signup') ? 'signup' : 'login';
-          toggleForm(targetForm);
-      });
-  });
-
-  // Login Form Submission
-  const loginForm = document.getElementById('login-form');
-  loginForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      const email = loginForm.email.value;
-      const password = loginForm.password.value;
-
-      // Send POST request to login API
-      fetch('https://electric-charging-app.onrender.com/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data.success) {
-              alert('Login successful!');
-              // Handle success (e.g., redirect to the dashboard)
-          } else {
-              alert('Login failed: ' + data.message);
-          }
-      })
-      .catch(error => {
-          console.error('Error:', error);
-          alert('An error occurred. Please try again later.');
-      });
-  });
-
-  // Signup Form Submission
-  const signupForm = document.getElementById('signup-form');
-  signupForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      const username = signupForm.username.value;
-      const email = signupForm.email.value;
-      const password = signupForm.password.value;
-      const confirmPassword = signupForm.confirmPassword.value;
-
-      if (password !== confirmPassword) {
-          alert('Passwords do not match!');
-          return;
-      }
-
-      // Send POST request to signup API
-      fetch('https://electric-charging-app.onrender.com/signup', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, email, password })
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data.success) {
-              alert('Signup successful!');
-              // Handle success (e.g., redirect to login or dashboard)
-          } else {
-              alert('Signup failed: ' + data.message);
-          }
-      })
-      .catch(error => {
-          console.error('Error:', error);
-          alert('An error occurred. Please try again later.');
-      });
-  });
-
-  // Slideshow functionality
-  let slideIndex = 0;
-  function showSlides() {
-      const slides = document.querySelectorAll('.mySlides');
-      slides.forEach((slide, index) => {
-          slide.style.display = (index === slideIndex) ? 'block' : 'none';
-      });
-      slideIndex = (slideIndex + 1) % slides.length;
-  }
+function plusSlides(n) {
+  slideIndex += n - 1;  // Adjust index for manual controls
   showSlides();
-  setInterval(showSlides, 3000); // Change slide every 3 seconds
+}
 
-  document.querySelector('.prev').addEventListener('click', function() {
-      slideIndex = (slideIndex - 1 + document.querySelectorAll('.mySlides').length) % document.querySelectorAll('.mySlides').length;
-      showSlides();
-  });
+// Elements for the calculator section
+    const calculatorForm = document.getElementById("calculatorForm");
+    const timeTakenElement = document.getElementById("timeTaken");
+    const totalCostElement = document.getElementById("totalCost");
 
-  document.querySelector('.next').addEventListener('click', function() {
-      slideIndex = (slideIndex + 1) % document.querySelectorAll('.mySlides').length;
-      showSlides();
-  });
+    // Elements for the booking form
+    const bookingForm = document.getElementById("bookingForm");
+    const locationInput = document.getElementById("location");
+    const dateInput = document.getElementById("date");
+    const startTimeInput = document.getElementById("startTime");
+    const durationHoursInput = document.getElementById("durationHours");
+    const durationMinutesInput = document.getElementById("durationMinutes");
 
-  // Booking and Cost Estimation
-  const bookingForm = document.getElementById('bookingCalculatorForm');
-  bookingForm.addEventListener('submit', function(event) {
-      event.preventDefault();
+    // Set the minimum date for the booking form (today's date)
+    const today = new Date().toISOString().split("T")[0];
+    dateInput.setAttribute("min", today);
 
-      const location = document.getElementById('location').value;
-      const date = document.getElementById('date').value;
-      const startTime = document.getElementById('startTime').value;
-      const durationHours = parseFloat(document.getElementById('durationHours').value);
-      const durationMinutes = parseFloat(document.getElementById('durationMinutes').value);
-      const batteryCapacity = parseFloat(document.getElementById('batteryCapacity').value);
-      const chargerType = parseFloat(document.getElementById('chargerType').value);
-      const initialCharge = parseFloat(document.getElementById('initialCharge').value);
-      const desiredCharge = parseFloat(document.getElementById('desiredCharge').value);
+    // Event listener for calculator form submission
+    calculatorForm.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-      const chargeNeeded = ((desiredCharge - initialCharge) / 100) * batteryCapacity;
-      const timeTaken = chargeNeeded / chargerType;
-      const totalCost = calculateCost(chargerType, timeTaken);
+        // Get values from calculator form
+        const batteryCapacity = parseFloat(document.getElementById("batteryCapacity").value);
+        const chargerType = parseFloat(document.getElementById("chargerType").value);
+        const initialCharge = parseFloat(document.getElementById("initialCharge").value);
+        const desiredCharge = parseFloat(document.getElementById("desiredCharge").value);
 
-      // Send POST request to booking API
-      fetch('https://electric-charging-app.onrender.com/book', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-              location,
-              date,
-              startTime,
-              durationHours,
-              durationMinutes,
-              batteryCapacity,
-              chargerType,
-              initialCharge,
-              desiredCharge,
-              totalCost
-          })
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data.success) {
-              alert('Booking successful!');
-              // Display calculated results
-              document.getElementById('timeTaken').textContent = `Time Taken: ${timeTaken.toFixed(2)} hours`;
-              document.getElementById('totalCost').textContent = `Total Cost: $${totalCost.toFixed(2)}`;
-          } else {
-              alert('Booking failed: ' + data.message);
-          }
-      })
-      .catch(error => {
-          console.error('Error:', error);
-          alert('An error occurred. Please try again later.');
-      });
-  });
+        // Validate the inputs
+        if (initialCharge >= desiredCharge) {
+            alert("Initial charge must be less than the desired charge.");
+            return;
+        }
 
-  function calculateCost(chargerType, timeTaken) {
-      let costPerSession = 0;
+        // Calculate the charging needed (percentage and kWh)
+        const chargeNeededPercentage = desiredCharge - initialCharge;
+        const chargeNeededKWh = (batteryCapacity * chargeNeededPercentage) / 100;
 
-      switch (chargerType) {
-          case 10:
-              costPerSession = 5; // Standard Charger cost
-              break;
-          case 50:
-              costPerSession = 10; // Fast Charger cost
-              break;
-          case 150:
-              costPerSession = 20; // Rapid Charger cost
-              break;
-      }
+        // Calculate time taken in hours
+        const chargingTime = chargeNeededKWh / chargerType;
 
-      return costPerSession * timeTaken;
-  }
+        // Calculate cost
+        const costPerKWh = 0.20; // Example rate of $0.20 per kWh
+        const totalCost = chargeNeededKWh * costPerKWh;
 
-  // Ensure the date input has the current date as the minimum
-  const dateInput = document.getElementById('date');
-  const today = new Date().toISOString().split('T')[0];
-  dateInput.setAttribute('min', today);
+        // Display results
+        timeTakenElement.textContent = `Time Taken: ${chargingTime.toFixed(2)} hours`;
+        totalCostElement.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
+    });
 
-  // Progress Bar Animation
+    // Event listener for booking form submission
+    bookingForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Get values from booking form
+        const location = locationInput.value;
+        const date = dateInput.value;
+        const startTime = startTimeInput.value;
+        const durationHours = parseInt(durationHoursInput.value);
+        const durationMinutes = parseInt(durationMinutesInput.value);
+
+        // Validate the booking form inputs
+        if (!location || !date || !startTime || (durationHours === 0 && durationMinutes === 0)) {
+            alert("Please fill in all fields correctly.");
+            return;
+        }
+
+        // Format the booking duration
+        const totalDurationInMinutes = durationHours * 60 + durationMinutes;
+
+        // Create the booking object
+        const bookingData = {
+            location,
+            date,
+            startTime,
+            duration: `${durationHours} hour(s) ${durationMinutes} minute(s)`
+        };
+
+        console.log("Booking Data:", bookingData);
+
+        alert("Booking confirmed!");
+    });
+// Progress Bar Animation
   window.addEventListener('scroll', function() {
       const scrollProgress = document.querySelector('.progress-bar');
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = (window.scrollY / totalHeight) * 100;
       scrollProgress.style.width = `${progress}%`;
   });
-});
