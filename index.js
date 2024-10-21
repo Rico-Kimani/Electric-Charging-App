@@ -147,10 +147,27 @@ function plusSlides(n) {
             duration: `${durationHours} hour(s) ${durationMinutes} minute(s)`
         };
 
-        console.log("Booking Data:", bookingData);
-
+        // Foward booking data to the JSON server 
+    fetch('https://electric-charging-app.onrender.com/bookings', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(bookingData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Booking confirmed:", data);
         alert("Booking confirmed!");
+        // Optionally clear form fields after successful booking
+        bookingForm.reset();
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred while booking.");
     });
+});
+
 // Progress Bar Animation
   window.addEventListener('scroll', function() {
       const scrollProgress = document.querySelector('.progress-bar');
